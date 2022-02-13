@@ -1,1 +1,0 @@
-cat event_history.csv  | grep -i serdar | grep -i terminate | awk -F, '{print $10}' | cut -d':' -f2 | sort -u | tee result.txt
