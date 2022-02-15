@@ -1,47 +1,52 @@
 #!/bin/bash
 
-# This script creates a new user on the local system.
-# You will be prompted to enter the username (login), the person name, and a password.
-# The username, password, and host for the account will be displayed.
-# Make sure the script is being executed with superuser privileges.
-
-# Get the username (login).
-read -p "Enter your username: " username
-
-# Get the real name (contents for the description field).
-read -p "Enter your real name: " comment
-
-# Get the password.
-read -p "Define a default password to user: " password
-
-# Create the account.
-echo $username
-sudo useradd -c "$comment" $username
-
-# Check to see if the useradd command succeeded.
-# We don't want to tell the user that an account was created when it hasn't been.
-if [[ $(echo $?) == 0 ]]
+# Check if we are root privilage or not
+if [[ $(whoami) == root ]]
 then
-        echo "useradd command succeeded"
+  echo "You are root user"
 else
-        echo "useradd command is not succeeded"
+  sudo su -
 fi
 
-# Set the password.
-echo $password | sudo passwd $username --stdin
-
-# Check to see if the passwd command succeeded.
-if [[ $(echo $?) == 0 ]]
+# Which files are we going to back up. Please make sure to exist /home/ec2-user/data file
+if [[ -e /home/ec2-user/data ]]
 then
-        echo "passwd command succeeded"
+  echo "/home/ec2-user/data folder exist"
 else
-        echo "passwd command is not succeeded"
+  mkdir /home/ec2-user/data
+  echo "/home/ec2-user/data created"
 fi
 
-# Force password change on first login.
-sudo passwd -e $username
+# Where do we backup to. Please crete this file before execute this script
+if [[ -e /mnt/backup ]]
+then
+  echo "/mnt/backup folder exist"
+else
+  mkdir /mnt/backup
+  echo "/mnt/backup created"
+fi
 
-# Display the username, password, and the host where the user was created.
-echo -e "Your username: $username
-Your password: $password
-Hostname : $HOSTNAME"
+# Create archive filename based on time
+EC2USER_BACKUP="${HOSTNAME}_ec2user_data_$(date +"%Y_%m_%d_%I_%M_%p").tgz"
+ETC_BACKUP="${HOSTNAME}_etc_$(date +"%Y_%m_%d_%I_%M_%p").tgz"
+BOOT_BACKUP="${HOSTNAME}_boot_$(date +"%Y_%m_%d_%I_%M_%p").tgz"
+USR_BACKUP="${HOSTNAME}_usr_$(date +"%Y_%m_%d_%I_%M_%p").tgz"
+
+# Print start status message.
+echo "backup process is started"
+
+# Backup the files using tar.
+tar -cvf /mnt/backup/"$EC2USER_BACKUP" /home/ec2-user/data
+tar -cvf /mnt/backup/"$ETC_BACKUP" /etc
+tar -cvf /mnt/backup/"$BOOT_BACKUP" /boot
+tar -cvf /mnt/backup/"$USR_BACKUP" /usr
+
+# Print end status message.
+echo "backup process is ended"
+
+# Long listing of files in $dest to check file sizes.
+ls -al /mnt/backup
+
+* * * * * /root/backup.sh
+ls -al /mnt/backup
+*/5 * * * * /root/backup.sh
