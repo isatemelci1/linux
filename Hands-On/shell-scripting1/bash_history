@@ -314,8 +314,6 @@ sudo yum install git
 mkdir projepy
 ls
 cd projepy/
-git clone https://github.com/isatemelci1/ClarusWayRepo.git
-git clone https://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@github.com/isatemelci1/ClarusWayRepo.git
 ls
 cd cl
 cd ClarusWayRepo/
