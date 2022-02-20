@@ -1,0 +1,376 @@
+mkdir loops && cd loops
+vi while-loop.sh
+chmod +x while-loop.sh 
+./while-loop.sh 
+vi until-loop.sh
+chmod +x until-loop.sh 
+./until-loop.sh 
+vi for-loop.sh
+chmod +x for-loop.sh 
+./for-loop.sh 
+function hello {echo 'Hello'}
+function hello { echo Hello }; 
+vi case-function.sh
+chmod +x case-function.sh 
+./case-function.sh 
+vi case-function.sh
+./case-function.sh 
+ls
+cd loops/
+ls
+mv while-loop.sh 1-while-loop.sh
+ls
+mv until-loop.sh 2-until-loop.sh
+mv for-loop.sh 2-for-loop.sh
+ls
+mv 2-for-loop.sh 3-for-loop.sh
+ls
+./3-for-loop.sh 
+vi 4-for-array.sh
+chmod +x 4-for-array.sh 
+./4-for-array.sh 
+PATH=$PATH:/home/ec2-user/loops
+4-for-array.sh 
+vi 5-infinite-loop.sh
+chmod +x 5-infinite-loop.sh 
+5-infinite-loop.sh 
+clear
+vi 5-infinite-loop-a.sh
+chmod +x 5-infinite-loop-a.sh 
+5-infinite-loop-a.sh 
+vi 5-infinite-loop-b.sh
+chmod +x 5-infinite-loop-b.sh 
+5-infinite-loop-b.sh 
+vi 6-select-loop.sh
+chmod +x 6-select-loop.sh 
+6-select-loop.sh 
+ls
+cd ..
+mkdir functions && cd functions
+cd ..
+ls
+rm -rf functions/
+ls
+cd ..
+ls
+cd loops/
+cd ..
+cd functions/
+vi 1-functions.sh
+chmod +x 1-functions.sh 
+1-while-loop.sh 
+./1-functions.sh 
+vi 1-functions.sh
+./1-functions.sh 
+vi 1-functions.sh
+vi 2-nested-functions.sh
+chmod +x 2-nested-functions.sh 
+./2-nested-functions.sh 
+vim 3-variable-scope.sh
+chmod +x 3-variable-scope.sh 
+./3-variable-scope.sh 
+ls
+vi user-passwd.sh
+chmod +x user-passwd.sh 
+./user-passwd.sh 
+$HOST
+$HOSTNAME
+echo $HOSTNAME
+echo $HOST
+vi user-passwd.sh
+./user-passwd.sh 
+rm -rf user-passwd.sh 
+vi user-passwd.sh
+chmod +x user-passwd.sh 
+./user-passwd.sh 
+vi user-passwd.sh
+./user-passwd.sh 
+vi user-passwd.sh
+./user-passwd.sh 
+vi user-passwd.sh
+./user-passwd.sh 
+sudo cat /etc/shadow | grep asd
+vi user-passwd.sh
+./user-passwd.sh 
+mkdir sed-awk-command
+cd sed-awk-command/
+vi sed.txt
+sed 's/linux/ubuntu/' sed.txt 
+cat sed.txt 
+sed 's/linux/ubuntu/3' sed.txt 
+sed 's/linux/ubuntu/i' sed.txt 
+sed 's/linux/ubuntu/g' sed.txt 
+sed 's/linux/ubuntu/ig' sed.txt 
+sed 's/linux/ubuntu/2ig' sed.txt 
+cat sed.txt 
+sed 's/linux/ubuntu/2ig' sed.txt 
+cat sed.txt 
+sed '1 s/linux/ubuntu/ig' sed.txt 
+sed -i 's/linux/ubuntu/ig' sed.bak sed.txt 
+sed -i 's/linux/ubuntu/ig' sed.txt sed.txt.bak 
+sed 's/linux/ubuntu/ig' sed.txt 
+cat sed.txt 
+sed "-i.bak" 's/linux/ubuntu/ig' sed.txt 
+ls
+cat sed.txt.bak 
+vi awk.txt
+cat awk.txt 
+awk '{print}' awk.txt 
+vi awk.txt
+awk '/This/ {print}' awk.txt 
+awk '{print $2}' awk.txt
+awk '{print $2,$4}' awk.txt
+vi awk2.txt
+awk -F: '{print $2}' awk.txt
+awk -F: '{print $2}' awk2.txt
+ls -l | awk '{print $9}'
+ls -l
+awk '{ if($7 == "3") print $0;}' awk.txt
+awk '{ if($7 == "3") print $0;}' awk2.txt
+awk '{split($0,a,","); print a[10]}'
+ls
+export PS1="\[\e[31m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]\[\e[35m\]\\$\[\e[m\] "
+clear
+touch data
+ls
+tar -zcvf data $HOSTNAME.tgz
+tar -zcvf data "$HOSTNAME".tgz
+ls
+tar -zcvf "$HOSTNAME".tgz data
+ls
+tar -zcvf "$HOSTNAME""`date`".tgz data
+tar -zcvf `date`.tgz data
+DATE=`date`
+$DATE
+echo $DATE
+tar -zcvf "$DATE-$HOSTNAME".tgz data
+tar -zcvf "$DATE $HOSTNAME".tgz data
+tar -zcvf "$DATE".tgz data
+ls
+tar -zcvf "$DATE $HOSTNAME.tgz" data
+tar -zcvf "$DATE.tgz" data
+tar -zcvf "$(date '+%F').tar.gz" data
+ls
+tar -zcvf "$(date '+%F_%H-%M_%p').tar.gz" data
+ls
+whoami
+ls
+rm -rf 2022*
+ls
+rm -rf Mon
+ls
+rm -rf ip-172-31-95-195.ec2.internal.tgz 
+ls
+rm -rf data 
+rm -rf user-passwd.sh 
+ls
+cd l
+cd linux/
+ls
+cd Project-101/
+ls
+cd First_Part/
+ls
+cat event_history.csv | grep serdar | grep terminate
+cat event_history.csv | grep serdar | grep Terminate
+cat event_history.csv | grep serdar | grep Terminate | head -l
+cat event_history.csv | grep serdar | grep Terminate | head -l | cut -d'"' f16
+cat event_history.csv | grep serdar | grep Terminate | cut -d'"' f16
+cat event_history.csv | grep serdar | grep Terminate | cut -F'"' f16
+cat event_history.csv | grep serdar | grep Terminate | cut -d'"' -f16
+cat event_history.csv | grep serdar | grep Terminate | head -l | cut -d'"' -f16 
+cat event_history.csv | grep serdar | grep Terminate | head -1 | cut -d'"' -f16 
+cd ..
+vi linux-regex-handson.md
+ls
+vi fruits.txt
+cat fruits.txt 
+cat fruits.txt | grep e
+cat fruits.txt | grep ap
+cat fruits.txt | grep k.k
+cat fruits.txt 
+cat fruits.txt | grep k.k
+cat fruits.txt | grep k..k
+cat fruits.txt | grep ^a
+cat fruits.txt | grep ^b
+cat fruits.txt | grep ^c
+cat fruits.txt | grep ^l
+cat fruits.txt | grep n$
+cat fruits.txt | grep k[ae]k
+cat fruits.txt | grep k[ic]k
+cat fruits.txt | grep -i k[ic]k
+cat fruits.txt | grep -i k[a-z]k
+cat fruits.txt | grep -i k[a.]k
+cat fruits.txt | grep -i k[a][l]k
+cat fruits.txt | grep {p}
+cat fruits.txt | grep {2}p
+cat fruits.txt | grep -E p{2}
+cat fruits.txt | grep p{2}
+cat fruits.txt | grep -E p{2}
+cd First_Part/
+ls
+cat event_history.csv | grep serdar | grep Terminate | head -1 | grep "i-"
+cat event_history.csv | grep serdar | grep Terminate | head -1 | grep "i-."
+cat event_history.csv | grep serdar | grep Terminate | head -1 | grep -E i-{17}
+cat event_history.csv | grep serdar | grep Terminate | head -1 | grep -E "i-[a-Z0-9]{17}"
+cat event_history.csv | grep serdar | grep Terminate | grep -E "i-[a-Z0-9]{17}"
+cat event_history.csv | grep serdar | grep Terminate | grep -Eo "i-[a-Z0-9]{17}"
+cat event_history.csv | grep serdar | grep Terminate | grep -Eo "i-[a-Z0-9]{17}" | sort -u
+cat event_history.csv | grep serdar | grep Terminate | grep -Eo "i-[a-Z0-9]{17}" | sort -u -n
+cat event_history.csv | grep serdar | grep Terminate | grep -Eo "i-[a-Z0-9]{17}" | sort -u | wc -l
+cat event_history.csv | grep serdar | grep Terminate | grep -Eo "i-[a-Z0-9]{17}" | sort -u
+vi script.sh
+ls
+chmod +x script.sh 
+./script.sh event_history.csv 
+ls
+cat result.txt 
+vi script.sh
+./script.sh
+cd ..
+ls
+cd Second_Part/
+ls
+vi user_passwd.sh 
+ls
+sudo ./user_passwd.sh 
+sudo ./user_passwd.sh
+./user_passwd.sh
+vi user_passwd.sh 
+./user_passwd.sh
+cat user_passwd.sh 
+vi user.sh
+cat user.sh 
+chmod +x user.sh 
+./user.sh 
+vi user.sh
+./user.sh 
+./user.sh ./user.sh 
+cd ..
+cd Forth_Part/
+ls
+cd Task_1
+ls
+cat info.json | grep -i privateipadd
+cat info.json | grep -i privateipadd | head -1
+cat info.json | grep -i privateipadd | head -1 | grep -E [0-9.]
+cat info.json | grep -i privateipadd | head -1 | grep -Eo [0-9.]
+cat info.json | grep -i privateipadd | head -1 | grep -Eo [0-9]
+cat info.json | grep -i privateipadd | head -1 | cut -d'"' -f4
+sed "s/ec2-private_ip/$(cat info.json | grep -i privateipadd | head -1 | cut -d'"' -f4)/" terraform.tf
+sed -i "s/ec2-private_ip/$(cat info.json | grep -i privateipadd | head -1 | cut -d'"' -f4)/" terraform.tf
+vi command.sh
+ls
+chmod +x command.sh 
+ls
+cd ..
+cd Third_Part/
+ls
+cd ..
+cd Forth_Part/
+cd Task_2
+ls
+echo -e $(cat certificate.pem)
+vi command.sh
+chmod +x command.sh 
+./command.sh 
+ls
+cd ..
+cd Task_3/
+ls
+cat auth.log | grep -i inva
+cat auth.log | grep -i "invalid user " | awk -F' ' '{print $8}' | sed 's/user//g;s/for//g' | sort | uniq -c
+clear
+cat auth.log | grep -i invalid | awk '{print $9}' | grep -v "from" | grep -v "invalid" | sort -u
+cat auth.log | grep -i invalid | awk '{print $9}' | grep -v "from" | grep -v "invalid" | wc -l
+cat auth.log | grep -i "invalid user" | awk '{print $9}' | grep -v 'from' | grep -v 'invalid' | sed s/' '/\\n/g | sort | uniq -c | sort -n
+cat auth.log | grep -i "invalid user"
+cat auth.log | grep -i "invalid user " | cut -d
+ls
+vi invalid_user.sh
+ls
+chmod +x invalid_user.sh 
+ls
+./invalid_user.sh 
+ls
+cat new_invalid_user.txt 
+cat invalid_user.txt 
+vi invalid_user.sh
+./invalid_user.sh 
+ls
+cat new_invalid_user.txt 
+clear
+cd ..
+cd Third_Part/
+ls
+vi backup.sh
+crontab -e
+ls
+cp backup.sh /home/ec2-user/
+ls /home/ec2-user/
+sudo yum update -y
+git --version
+sudo yum install git
+mkdir projepy
+ls
+cd projepy/
+git clone https://github.com/isatemelci1/ClarusWayRepo.git
+git clone https://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@github.com/isatemelci1/ClarusWayRepo.git
+ls
+cd cl
+cd ClarusWayRepo/
+ls
+cd python/
+ls
+cd hands-on/
+ls
+cd flask-01-02-hello-world-app-Jinja-Template/
+ls
+cd flask-02-Jinja_Template/
+ls
+python app.py
+pip install flask
+pip3 install flask
+pip list
+pip3 list
+python app.py
+sudo apt-get install python3-pip
+sudo yum install python3-pip
+pip3 install virtualenv
+python app.py
+sudo python app.py
+sudo python3 app.py
+pip3 install Flask
+ls
+python3 app.py 
+vi app.py 
+python3 app.py 
+curl 172.31.95.195:5000
+cd projepy/
+ls
+cd ClarusWayRepo/
+ls
+cd python/
+ls
+cd hands-on/
+ls
+cd flask-0
+cd flask-01
+cd flask-01-02-hello-world-app-Jinja-Template/
+ls
+cd flask-02-Jinja_Template/
+ls
+vi app.py 
+python3 app.py 
+vi app.py
+python3 app.py
+ls
+cd projepy/
+ls
+rm -rf ClarusWayRepo/
+ls
+cd ..
+ls
+rm -rf projepy/
+ls
+exit
